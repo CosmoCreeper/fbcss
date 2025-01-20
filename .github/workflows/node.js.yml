@@ -40,4 +40,4 @@ jobs:
       - name: Retrigger pages
         uses: actions/deploy-pages@main
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
