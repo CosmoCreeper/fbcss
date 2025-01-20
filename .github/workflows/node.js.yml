@@ -37,7 +37,3 @@ jobs:
           git add .
           git commit -m "Automated push from GitHub Actions workflow"
           git push -u origin main
-      - name: Retrigger pages
-        uses: actions/deploy-pages@main
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
