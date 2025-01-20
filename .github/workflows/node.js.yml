@@ -28,7 +28,7 @@ jobs:
           node index.js --headless --no-sandbox --chromium-headless --chromium-no-sandbox
       - name: Pull latest changes
         run: git pull origin main
-      - name: Push files to GitHub
+      - name: Push files to GitHub and Retrigger Pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -37,3 +37,6 @@ jobs:
           git add .
           git commit -m "Automated push from GitHub Actions workflow"
           git push -u origin main
+          curl --fail --request POST \
+            --url https://api.github.com/repos/${{ github.repository }}/pages/builds \
+            --header "Authorization: Bearer $USER_TOKEN"
