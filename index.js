@@ -143,9 +143,8 @@ for (let x = 0; x < 11; x++) {
                 .filter(
                     (a) =>
                         a.publishedAt === lastSunday.toISOString().split("T")[0]
-                )
-                .filter((a) => !a.title.toLowerCase().includes("live!"));
-            console.log(videoDetails);
+                );
+            if (videoDetails.length > 1) videoDetails = videoDetails.filter((a) => !a.title.toLowerCase().includes("live!"));
             if (videoDetails.length > 0) {
                 for (const videoObj of videoDetails) {
                     const transcript = await getCaptions(videoObj.videoId);
