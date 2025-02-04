@@ -1,4 +1,4 @@
-const prefix = "https://cosmocreeper.github.io/prss/data/";
+const prefix = "https://cosmocreeper.github.io/fbcss/data/";
 const suffix = ".json";
 
 const searchBar = document.getElementById("searchbar");
