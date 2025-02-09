@@ -1132,3 +1132,68 @@ body {
     margin-left: 50%;
     transform: translateX(-50%);
 }
+
+#welcome-screen {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
+    top: 0;
+    left: 0;
+    background-color: white;
+    transition: all 700ms ease;
+}
+
+#welcome-logo {
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    transform: translateX(-50%);
+}
+
+#welcome-title {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    font-weight: normal;
+    width: 250px;
+}
+
+#welcome-title em {
+    font-weight: bold;
+    font-size: 23px;
+}
+
+#welcome-text {
+    position: absolute;
+    bottom: 120px;
+    left: 50%;
+    width: 80vw;
+    transform: translateX(-50%);
+}
+
+#welcome-button {
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+    transition: all 400ms ease;
+    user-select: none;
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    color: #5D8B9E;
+    cursor: pointer;
+    padding: 5px 15px;
+    font-size: 18px;
+    border: none;
+}
+
+#welcome-button:hover {
+    background-color: #5D8B9E;
+    color: white;
+}

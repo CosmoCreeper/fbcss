@@ -1061,3 +1061,14 @@ matchesMobile.addEventListener("change", () => {
     mobileDropdowns(matchesMobile);
     resetSearch();
 });
+
+if (!localStorage.getItem("newUser")) {
+    localStorage.setItem("newUser", false);
+    document.getElementById("welcome-screen").style.opacity = "1";
+    document.getElementById("welcome-screen").style.visibility = "visible";
+}
+
+const closeWelcome = () => {
+    document.getElementById("welcome-screen").style.opacity = "0";
+    document.getElementById("welcome-screen").style.visibility = "hidden";
+}
