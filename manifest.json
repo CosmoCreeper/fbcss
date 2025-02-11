@@ -9,6 +9,7 @@
     "display": "standalone",
     "orientation": "any",
     "start_url": "/fbcss",
+    "scope": "/fbcss",
     "dir": "ltr",
     "lang": "en",
     "icons": [
