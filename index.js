@@ -27,8 +27,7 @@ const CNs = [
 
 const axios = require("axios");
 const fs = require("fs");
-
-const TranscriptAPI = require("youtube-transcript-api");
+const puppeteer = require("puppeteer");
 
 const API_KEY = process.env.API_KEY;
 
@@ -95,30 +94,18 @@ for (let x = 0; x < 11; x++) {
     }
 
     async function getCaptions(videoId) {
-        let plain = [];
-
-        let captions;
-        await TranscriptAPI.getTranscript(videoId).then(
-            (el) => (captions = el)
-        );
-        if (captions) {
-            try {
-                for (const line of captions) {
-                    const start = line["start"];
-                    let text;
-                    if (line["text"]) {
-                        text = line["text"] + " ";
-                    }
-                    plain.push([start, text]);
-                }
-            } catch (error) {
-                console.error("Error fetching captions:", error);
-            }
-        } else {
-            console.log(`No captions URL found for video ID: ${videoId}`);
+        const tactiqUrl = `https://tactiq.io/tools/run/youtube_transcript?yt=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D${videoId}`;
+        const browser = await puppeteer.launch();
+        const page = await browser.newPage();
+        await page.goto(tactiqUrl, { waitUntil: 'networkidle2' });
+        try {
+          await page.waitForSelector('#transcript', { timeout: 5000 });
+          const transcript = await page.$$eval('#transcript a', e=>e.map((a)=>[a.getAttribute("data-start"), a.textContent]));
+        } catch (error) {
+          console.error('Error fetching transcript:', error);
+        } finally {
+          await browser.close();
         }
-
-        return plain;
     }
 
     (async () => {

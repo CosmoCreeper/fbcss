@@ -18,13 +18,18 @@
     src: url("./assets/fonts/Poppins-SemiBold.ttf");
 }
 
+:root {
+    --accent-color: #5D8B9E;
+    --transparent-accent-color: rgba(93, 139, 158, 0.8);
+}
+
 body {
     font-family: "Poppins";
     margin: 0;
 }
 
 ::selection {
-    background-color: #5d8b9e;
+    background-color: var(--accent-color);
     color: white;
 }
 
@@ -112,12 +117,12 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    color: #5D8B9E;
+    color: var(--accent-color);
     cursor: pointer;
 }
 
 .time:hover {
-    background-color: #5D8B9E;
+    background-color: var(--accent-color);
     color: white;
 }
 
@@ -132,7 +137,7 @@ body {
 }
 
 .highlight {
-    color: #5D8B9E;
+    color: var(--accent-color);
 }
 
 .bracket {
@@ -180,7 +185,7 @@ body {
     position: relative;
     width: 655px;
     border-radius: 28px;
-    background-color: #5D8B9E;
+    background-color: var(--accent-color);
     color: white;
     font-family: "Poppins";
     font-weight: 400;
@@ -195,7 +200,7 @@ body {
 
 #searchbar::selection {
     background-color: white;
-    color: #5D8B9E;
+    color: var(--accent-color);
 }
 
 #search-button {
@@ -409,7 +414,7 @@ body {
 }
 
 .dropdown .checked {
-    background-color: #5D8B9E !important;
+    background-color: var(--accent-color) !important;
     color: white !important;
 }
 
@@ -456,7 +461,7 @@ body {
 }
 
 .pastor {
-    border: 1px solid #5D8B9E;
+    border: 1px solid var(--accent-color);
     border-radius: 8px;
     margin: 1px;
     padding: 5px 10px;
@@ -471,7 +476,7 @@ body {
 }
 
 .pastor.checked {
-    background-color: #5D8B9E;
+    background-color: var(--accent-color);
     color: white;
     padding-left: 25px;
 }
@@ -519,7 +524,7 @@ body {
 }
 
 #load-more:hover {
-    background-color: #5D8B9E;
+    background-color: var(--accent-color);
     color: white;
     box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
     border: 1px solid transparent;
@@ -603,7 +608,7 @@ body {
     bottom: 10px;
     right: 10px;
     border-radius: 50%;
-    background-color: #5D8B9E;
+    background-color: var(--accent-color);
     color: white;
     width: 50px;
     height: 50px;
@@ -616,7 +621,7 @@ body {
 }
 
 #scroll-to-top:hover {
-    background-color: rgba(93, 139, 158, 0.8);
+    background-color: var(--transparent-accent-color);
     box-shadow: none;
 }
 
@@ -1023,7 +1028,7 @@ body {
 }
 
 #transcript-sync #selected-line {
-    background-color: #5D8B9E;
+    background-color: var(--accent-color);
     color: white;
 }
 
@@ -1048,7 +1053,7 @@ body {
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 120px;
-  background-color: #5D8B9E;
+  background-color: var(--accent-color);
   color: #fff;
   text-align: center;
   border-radius: 6px;
@@ -1070,7 +1075,7 @@ body {
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: #5D8B9E transparent transparent transparent;
+  border-color: var(--accent-color) transparent transparent transparent;
 }
 
 .tooltip:hover .tooltiptext {
@@ -1081,7 +1086,7 @@ body {
 
 .tooltiptext::selection {
     background-color: white;
-    color: #5D8B9E;
+    color: var(--accent-color);
 }
 
 #skeleton {
