@@ -93,6 +93,7 @@ for (let x = 0; x < 11; x++) {
         }
     }
 
+    // Get captions.
     async function getCaptions(videoId) {
         const tactiqUrl = `https://tactiq.io/tools/run/youtube_transcript?yt=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D${videoId}`;
         const browser = await puppeteer.launch({
