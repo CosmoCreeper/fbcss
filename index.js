@@ -104,10 +104,10 @@ for (let x = 0; x < 11; x++) {
         try {
           await page.waitForSelector('#transcript', { timeout: 5000 });
           const transcript = await page.$$eval('#transcript a', e=>e.map((a)=>[a.getAttribute("data-start"), a.textContent]));
+          await browser.close();
+          return transcript;
         } catch (error) {
           console.error('Error fetching transcript:', error);
-        } finally {
-          await browser.close();
         }
     }
 
