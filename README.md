@@ -1,4 +1,4 @@
-# The FBC Sermon Search
+# The FBC Sermon Search PATENT PENDING
 **BREAKING CHANGE: Repo has been renamed to fbcss from prss to be more accurate.**\
 *DELAY: Project is being polished, but due to commercial delays, the program will not be announced yet.*
 
