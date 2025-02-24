@@ -3,8 +3,8 @@ name: Run Node.js script and push files
 on:
   workflow_dispatch:
   schedule:
-    - cron: 47 14 * * * # every Sunday at 2:47 PM UTC
-    - cron: 47 13 * * * # every Monday at 12:47 PM UTC
+    - cron: 47 14 * * * # every day at 2:47 PM UTC
+    - cron: 47 13 * * * # every day at 12:47 PM UTC
   push:
     branches:
       - 'main'  
