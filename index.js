@@ -8,6 +8,7 @@ const IDs = [
     "PLDgRNhRk716aEdkOU0T5ep5sk1gs2_-sz",
     "PLDgRNhRk716Z5f7Gz6jIangS3zwfVDw4Z",
     "PLDgRNhRk716b7Su_PE4CuqbiHE8cJaO3n",
+    "PLDgRNhRk716bZzEsZn9cAJZ-9yCGIdEyH",
     "PLDgRNhRk716aAzsef8-FSiybk9_BSz02C",
     "PLDgRNhRk716Zi_OjVesxilDZa6aNY7OLQ",
 ];
@@ -20,6 +21,7 @@ const CNs = [
     "2thessalonians",
     "luke",
     "titus",
+    "guests",
     "guests",
     "other",
     "live",
