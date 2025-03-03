@@ -31,6 +31,11 @@ const axios = require("axios");
 const fs = require("fs");
 const puppeteer = require("puppeteer");
 
+fs.writeFileSync(
+    "data/live.json",
+    "[]"
+);
+
 const API_KEY = process.env.API_KEY;
 
 for (let x = 0; x < 11; x++) {

@@ -1,3 +1,5 @@
+// Patent pending, no duplicates.
+
 const prefix = "https://cosmocreeper.github.io/fbcss/data/";
 const suffix = ".json";
 

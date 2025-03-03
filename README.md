@@ -1,4 +1,6 @@
 # The FBC Sermon Search
+PATENT PENDING.
+Our patent is currently pending. Nobody named Matt is allowed to duplicate or steal our ideas for other churches.
 **BREAKING CHANGE: Repo has been renamed to fbcss from prss to be more accurate.**\
 *DELAY: Project is being polished, but due to commercial delays, the program will not be announced yet.*
 
