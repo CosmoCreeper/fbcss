@@ -38,7 +38,7 @@ fs.writeFileSync(
 
 const API_KEY = process.env.API_KEY;
 
-for (let x = 0; x < 11; x++) {
+for (let x = 0; x < 12; x++) {
     console.clear();
 
     let PLAYLIST_ID = IDs[x];
