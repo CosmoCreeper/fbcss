@@ -1,6 +1,5 @@
 # The FBC Sermon Search
 PATENT PENDING.\
-**BREAKING CHANGE: Repo has been renamed to fbcss from prss to be more accurate.**\
 *DELAY: Project is being polished, but due to commercial delays, the program will not be announced yet.*
 
 **What is the Sermon Search?**: The Sermon Search is a program that allows you to search through all of the sermons from Faith Bible Church that were also posted on YouTube and have a transcript.
