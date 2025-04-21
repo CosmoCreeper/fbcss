@@ -271,12 +271,14 @@ for (let x = 0; x < 12; x++) {
                             );
                             if (transcript) {
                                 noneFound = false;
-                                transcriptsJSON.push({
-                                    id: videoObj.videoId,
-                                    name: videoObj.title,
-                                    date: videoObj.publishedAt,
-                                    transcript: transcript,
-                                });
+                                if (transcript.length !== 0) {
+                                    transcriptsJSON.push({
+                                        id: videoObj.videoId,
+                                        name: videoObj.title,
+                                        date: videoObj.publishedAt,
+                                        transcript: transcript,
+                                    });
+                                }
 
                                 const videoName = `Video: https://youtube.com/watch?v=${videoObj.videoId}`;
 
@@ -373,12 +375,14 @@ for (let x = 0; x < 12; x++) {
                         const transcript = await getCaptions(videoObj.videoId);
                         if (transcript) {
                             noneFound = false;
-                            transcriptsJSON.push({
-                                id: videoObj.videoId,
-                                name: videoObj.title,
-                                date: videoObj.publishedAt,
-                                transcript: transcript,
-                            });
+                            if (transcript.length !== 0) {
+                                transcriptsJSON.push({
+                                    id: videoObj.videoId,
+                                    name: videoObj.title,
+                                    date: videoObj.publishedAt,
+                                    transcript: transcript,
+                                });
+                            }
 
                             const videoName = `Video: https://youtube.com/watch?v=${videoObj.videoId}`;
 
