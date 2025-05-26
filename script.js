@@ -26,7 +26,7 @@ var firstScriptTag = document.getElementsByTagName("script")[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 uploadContent.style.height = "150px";
-booksContent.style.height = "220px";
+booksContent.style.height = "240px";
 sortContent.style.height = "160px";
 
 document.getElementById("start-date").value = "";
@@ -44,6 +44,7 @@ let results = [];
 let pastors = { rob: false, mark: false, greg: false, guests: false };
 let books = [
     [
+        ["Ruth", false, ""],
         ["1 Samuel", false, ""],
         ["Jeremiah", false, ""],
     ],
