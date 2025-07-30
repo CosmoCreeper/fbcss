@@ -133,25 +133,31 @@ const betweenDates = (date) => {
 (async () => {
     try {
         contents.innerHTML = `<div id="match-count">Loading sermons...</div>`;
+
+        const promises = [];
         for (const testament of books) {
             for (const book of testament) {
-                const response = await fetch(
-                    `${
-                        prefix + book[0].toLowerCase().replace(" ", "") + suffix
-                    }`
-                );
-                book[2] = await response.json();
+                promises.push((async () => {
+                    const response = await fetch(
+                        `${
+                            prefix + book[0].toLowerCase().replace(" ", "") + suffix
+                        }`
+                    );
+                    book[2] = await response.json();
+                })());
             }
         }
-        const dataFetch = await fetch(`${prefix}guests${suffix}`);
-        const data = await dataFetch.json();
-        mark = await data.filter((el) => el["name"].includes("Mark LeHew"));
-        greg = await data.filter((el) => el["name"].includes("Greg Ryan"));
-        guests = await data.filter(
-            (el) =>
-                !el["name"].includes("Greg Ryan") &&
-                !el["name"].includes("Mark LeHew")
-        );
+        promises.push((async () => {
+            const dataFetch = await fetch(`${prefix}guests${suffix}`);
+            const data = await dataFetch.json();
+            mark = await data.filter((el) => el["name"].includes("Mark LeHew"));
+            greg = await data.filter((el) => el["name"].includes("Greg Ryan"));
+            guests = await data.filter(
+                (el) =>
+                    !el["name"].includes("Greg Ryan") &&
+                    !el["name"].includes("Mark LeHew")
+            );
+        })());
         const responsesJSON = await Promise.all([
             fetch(`${prefix}other${suffix}`),
             fetch(`${prefix}specials${suffix}`),
@@ -160,6 +166,7 @@ const betweenDates = (date) => {
         [other, specials, live] = await Promise.all(
             responsesJSON.map((r) => r.json())
         );
+        await Promise.all(promises);
         resetSearch();
     } catch (err) {
         console.error(err);
@@ -408,83 +415,57 @@ const search = async () => {
         document
             .querySelectorAll("*")
             .forEach((el) => el.classList.add("papyrus"));
-        document.querySelector(".title").classList.add("threed");
+        document.querySelectorAll(".title").forEach(el => el.classList.add("threed"));
     }
     // Yap dollar
     else if (keyword === "yapdollar") {
         results = `<div class="match-count">Cheat code activated.</div>`;
         document.getElementById("screen").style.display = "block";
         searchBar.blur();
-        document.getElementById("funkyyap").oncanplaythrough = async () => {
-            await document.getElementById("funkyyap").play();
-            document.getElementById("slideshow").src = "assets/slideshow/1.png";
-            setTimeout(
-                () =>
-                    (document.getElementById("slideshow").src =
-                        "assets/slideshow/2&11.jpg"),
-                2400
-            );
-            setTimeout(
-                () =>
-                    (document.getElementById("slideshow").src =
-                        "assets/slideshow/3.png"),
-                5900
-            );
-            setTimeout(
-                () =>
-                    (document.getElementById("slideshow").src =
-                        "assets/slideshow/4.png"),
-                8400
-            );
-            setTimeout(
-                () =>
-                    (document.getElementById("slideshow").src =
-                        "assets/slideshow/5&10.png"),
-                9900
-            );
-            setTimeout(
-                () =>
-                    (document.getElementById("slideshow").src =
-                        "assets/slideshow/6.png"),
-                12900
-            );
-            setTimeout(
-                () =>
-                    (document.getElementById("slideshow").src =
-                        "assets/slideshow/7.png"),
-                13900
-            );
-            setTimeout(
-                () =>
-                    (document.getElementById("slideshow").src =
-                        "assets/slideshow/8.png"),
-                15400
-            );
-            setTimeout(
-                () =>
-                    (document.getElementById("slideshow").src =
-                        "assets/slideshow/9.png"),
-                16400
-            );
-            setTimeout(
-                () =>
-                    (document.getElementById("slideshow").src =
-                        "assets/slideshow/5&10.png"),
-                18400
-            );
-            setTimeout(
-                () =>
-                    (document.getElementById("slideshow").src =
-                        "assets/slideshow/2&11.jpg"),
-                19400
-            );
-            setTimeout(
-                () =>
-                    (document.getElementById("screen").style.display = "none"),
-                21400
-            );
-        };
-        await document.getElementById("funkyyap").load();
+        // Wait for the audio to be loaded and ready to play
+        const funkyyap = document.getElementById("funkyyap");
+        await funkyyap.load();
+        await new Promise((resolve) => {
+            if (funkyyap.readyState >= 4) {
+                resolve();
+            } else {
+                funkyyap.oncanplaythrough = () => resolve();
+            }
+        });
+
+        // Define the timeline for image changes
+        const slideShowTimeline = [
+            { time: 0, image: "assets/slideshow/1.png" },
+            { time: 1.19, image: "assets/slideshow/2&11.jpg" },
+            { time: 6.04, image: "assets/slideshow/3.png" },
+            { time: 8, image: "assets/slideshow/4.png" },
+            { time: 9.14, image: "assets/slideshow/5&10.png" },
+            { time: 12.05, image: "assets/slideshow/6.png" },
+            { time: 13.11, image: "assets/slideshow/7.png" },
+            { time: 14.18, image: "assets/slideshow/8.png" },
+            { time: 16.03, image: "assets/slideshow/9.png" },
+            { time: 18.05, image: "assets/slideshow/5&10.png" },
+            { time: 19.12, image: "assets/slideshow/2&11.jpg" }
+        ];
+
+        // Add timeupdate listener to sync images with audio
+        funkyyap.addEventListener("timeupdate", () => {
+            const currentTime = funkyyap.currentTime;
+            
+            // Find the appropriate image for the current time
+            const currentSlide = slideShowTimeline.findLast(point => currentTime >= point.time);
+            if (currentSlide) {
+                document.getElementById("slideshow").src = currentSlide.image;
+            }
+        });
+
+        // Hide screen when audio ends
+        funkyyap.addEventListener("ended", () => {
+            document.getElementById("screen").style.display = "none";
+        });
+
+        // Start audio and set initial image
+        await funkyyap.play();
         video.src = "";
     }
     // Normal search query
