@@ -1,4 +1,5 @@
 const IDs = [
+    "PLDgRNhRk716YU01ww7hWrlc43lpJ5gcQ1",
     "PLDgRNhRk716b1SRWDf7NYGyHiVwpULRYr",
     "PLDgRNhRk716aSkNKUhXQFweV-q9lQcHYz",
     "PLDgRNhRk716ZHJ16VQ5nvnzldXgWwNkbl",
@@ -14,6 +15,7 @@ const IDs = [
     "PLDgRNhRk716Zi_OjVesxilDZa6aNY7OLQ",
 ];
 const CNs = [
+    "2peter",
     "ruth",
     "1samuel",
     "jeremiah",
@@ -190,6 +192,9 @@ for (let x = 0; x < 12; x++) {
                                 existingVideo.id === video.videoId
                         )
                 );
+                const peter = await JSON.parse(
+                    fs.readFileSync("data/2peter.json")
+                );
                 const ruth = await JSON.parse(
                     fs.readFileSync("data/ruth.json")
                 );
@@ -221,15 +226,17 @@ for (let x = 0; x < 12; x++) {
                     fs.readFileSync("data/guests.json")
                 );
 
-                const totalDatabase = await ruth.concat(
-                    samuel.concat(
-                        jeremiah.concat(
-                            titus.concat(
-                                luke.concat(
-                                    thessalonians.concat(
-                                        specials.concat(
-                                            hebrews.concat(
-                                                revelation.concat(guests)
+                const totalDatabase = await peter.concat(
+                    ruth.concat(
+                        samuel.concat(
+                            jeremiah.concat(
+                                titus.concat(
+                                    luke.concat(
+                                        thessalonians.concat(
+                                            specials.concat(
+                                                hebrews.concat(
+                                                    revelation.concat(guests)
+                                                )
                                             )
                                         )
                                     )

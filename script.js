@@ -53,6 +53,7 @@ let books = [
         ["2 Thessalonians", false, ""],
         ["Titus", false, ""],
         ["Hebrews", false, ""],
+        ["2 Peter", false, ""],
         ["Revelation", false, ""],
     ],
 ];
