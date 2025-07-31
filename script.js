@@ -32,6 +32,10 @@ sortContent.style.height = "160px";
 document.getElementById("start-date").value = "";
 document.getElementById("end-date").value = "";
 
+document.body.setAttribute("color-scheme",
+    localStorage.getItem("color-scheme") || "auto"
+);
+
 const checkComponent = `
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0"/>
@@ -404,6 +408,13 @@ const search = async () => {
 
         loadSermons(currLoadedSermons, currPage);
         return;
+    }
+    // Change to inputted color scheme
+    else if (searchBar.value.startsWith('colorscheme="') && searchBar.value.endsWith('"')) {
+        const colorScheme = searchBar.value.replace(/^colorscheme="|"/g, "");
+        results = `<div class="match-count">Color scheme changed to ${colorScheme}.</div>`;
+        document.body.setAttribute("color-scheme", colorScheme);
+        localStorage.setItem("color-scheme", colorScheme);
     }
     // Soundboard
     else if (keyword === "abacabb") {
