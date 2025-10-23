@@ -26,14 +26,14 @@ var firstScriptTag = document.getElementsByTagName("script")[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 uploadContent.style.height = "150px";
-booksContent.style.height = "250px";
+booksContent.style.height = "300px";
 sortContent.style.height = "160px";
 
 document.getElementById("start-date").value = "";
 document.getElementById("end-date").value = "";
 
 document.body.setAttribute("color-scheme",
-    localStorage.getItem("color-scheme") || "auto"
+    localStorage.getItem("color-scheme") || "light"
 );
 
 const checkComponent = `
@@ -50,6 +50,7 @@ let books = [
     [
         ["Ruth", false, ""],
         ["1 Samuel", false, ""],
+	["Jonah", false, ""],
         ["Jeremiah", false, ""],
     ],
     [

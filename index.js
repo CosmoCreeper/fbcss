@@ -1,4 +1,6 @@
 const IDs = [
+    "PLDgRNhRk716bptfCQNkkiH4rCOndJb3Dh",
+    "PLDgRNhRk716YFasOkxyLztHA-_r9_LQDI",
     "PLDgRNhRk716YU01ww7hWrlc43lpJ5gcQ1",
     "PLDgRNhRk716b1SRWDf7NYGyHiVwpULRYr",
     "PLDgRNhRk716aSkNKUhXQFweV-q9lQcHYz",
@@ -15,6 +17,8 @@ const IDs = [
     "PLDgRNhRk716Zi_OjVesxilDZa6aNY7OLQ",
 ];
 const CNs = [
+    "acts",
+    "jonah",
     "2peter",
     "ruth",
     "1samuel",
