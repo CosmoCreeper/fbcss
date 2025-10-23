@@ -55,6 +55,7 @@ let books = [
     ],
     [
         ["Luke", false, ""],
+		["Acts", false, ""],
         ["2 Thessalonians", false, ""],
         ["Titus", false, ""],
         ["Hebrews", false, ""],
@@ -1058,3 +1059,4 @@ matchesMobile.addEventListener("change", () => {
     mobileDropdowns(matchesMobile);
     resetSearch();
 });
+
